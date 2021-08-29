@@ -33,7 +33,7 @@ const hamburger: IProductInfo = {
   price: 15.99,
   calories: 78,
   isFavourite: true,
-  image: require('../assets/dummyData/hamburger.png'),
+  image: require('../../assets/dummyData/hamburger.png'),
 };
 
 const hotTacos: IProductInfo = {
@@ -44,7 +44,7 @@ const hotTacos: IProductInfo = {
   price: 10.99,
   calories: 78,
   isFavourite: false,
-  image: require('../assets/dummyData/hot_tacos.png'),
+  image: require('../../assets/dummyData/hot_tacos.png'),
 };
 
 const vegBiryani: IProductInfo = {
@@ -55,7 +55,7 @@ const vegBiryani: IProductInfo = {
   price: 10.99,
   calories: 78,
   isFavourite: true,
-  image: require('../assets/dummyData/veg_biryani.png'),
+  image: require('../../assets/dummyData/veg_biryani.png'),
 };
 
 const wrapSandwich: IProductInfo = {
@@ -66,7 +66,7 @@ const wrapSandwich: IProductInfo = {
   price: 10.99,
   calories: 78,
   isFavourite: true,
-  image: require('../assets/dummyData/wrap_sandwich.png'),
+  image: require('../../assets/dummyData/wrap_sandwich.png'),
 };
 
 const menu = [

@@ -6,6 +6,8 @@ import {
   ScrollView,
   TouchableWithoutFeedback,
   Modal,
+  StyleProp,
+  ViewStyle,
 } from 'react-native';
 import {
   IconButton,
@@ -16,20 +18,33 @@ import {
 
 import { COLORS, FONTS, SIZES, constants, icons } from '../../constants';
 
-const Section = ({ containerStyle, title, children }: any) => {
+interface ISection {
+  containerStyle?: StyleProp<ViewStyle>;
+  title: string;
+  children: React.ReactNode;
+}
+
+const Section = ({ containerStyle, title, children }: ISection) => {
   return (
     <View
-      style={{
-        marginTop: SIZES.padding,
-        ...containerStyle,
-      }}>
+      style={[
+        {
+          marginTop: SIZES.padding,
+        },
+        containerStyle,
+      ]}>
       <Text style={{ ...FONTS.h3 }}>{title}</Text>
       {children}
     </View>
   );
 };
 
-const FilterModal = ({ isVisible, onClose }: any) => {
+interface IFilterModal {
+  isVisible: boolean;
+  onClose(): void;
+}
+
+const FilterModal = ({ isVisible, onClose }: IFilterModal) => {
   const modalAnimatedValue = React.useRef(new Animated.Value(0)).current;
 
   const [showFilterModal, setShowFilterModal] = React.useState(isVisible);
@@ -71,7 +86,7 @@ const FilterModal = ({ isVisible, onClose }: any) => {
             min={1}
             max={20}
             postfix="km"
-            onValuesChange={(values: any) => console.log(values)}
+            onValuesChange={(values: number[]) => console.log(values)}
           />
         </View>
       </Section>
@@ -82,8 +97,7 @@ const FilterModal = ({ isVisible, onClose }: any) => {
     return (
       <Section
         title="Delivery Time"
-        containerSty
-        le={{
+        containerStyle={{
           marginTop: 40,
         }}>
         <View

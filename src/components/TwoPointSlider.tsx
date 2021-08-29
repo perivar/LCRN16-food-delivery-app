@@ -8,7 +8,7 @@ interface ITwoPointSlider {
   values: number[];
   min: number;
   max: number;
-  prefix: string;
+  prefix?: string;
   postfix: string;
   onValuesChange(values: number[]): void;
 }

@@ -15,8 +15,8 @@ import { FilterModal } from '../';
 
 interface ISection {
   title: string;
-  onPress: any;
-  children?: any;
+  onPress(): void;
+  children?: React.ReactNode;
 }
 
 const Section = ({ title, onPress, children }: ISection) => {
@@ -114,6 +114,8 @@ const Home = () => {
           style={{
             flex: 1,
             marginLeft: SIZES.radius,
+            margin: 0,
+            padding: 0,
             ...FONTS.body3,
           }}
           placeholder="search food..."

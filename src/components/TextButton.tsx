@@ -10,7 +10,7 @@ import { FONTS, COLORS } from '../constants';
 
 interface ITextButton {
   label: string;
-  labelStyle: StyleProp<TextStyle>;
+  labelStyle?: StyleProp<TextStyle>;
   buttonContainerStyle: StyleProp<ViewStyle>;
   onPress(): void;
 }

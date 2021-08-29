@@ -26,7 +26,7 @@ interface ICustomDrawerItem {
   label: string;
   icon: ImageProps | Readonly<ImageProps>;
   isFocused?: boolean;
-  onPress?: any;
+  onPress?(): void;
 }
 
 const CustomDrawerItem = ({
@@ -70,7 +70,7 @@ const CustomDrawerItem = ({
 interface CustomDrawerContent {
   navigation: DrawerNavigationHelpers;
   selectedTab: string;
-  setSelectedTab: any;
+  setSelectedTab(tab: string): void;
 }
 
 const CustomDrawerContent = ({
@@ -202,7 +202,7 @@ const CustomDrawerContent = ({
 
 interface ICustomDrawer {
   selectedTab: string;
-  setSelectedTab: any;
+  setSelectedTab(tab: string): void;
 }
 
 const CustomDrawer = ({ selectedTab, setSelectedTab }: ICustomDrawer) => {

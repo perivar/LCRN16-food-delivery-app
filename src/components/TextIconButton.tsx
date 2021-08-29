@@ -13,7 +13,7 @@ import { FONTS, COLORS } from '../constants';
 
 interface ITextIconButton {
   containerStyle: StyleProp<ViewStyle>;
-  label: string;
+  label: number;
   labelStyle: StyleProp<TextStyle>;
   icon: ImageSourcePropType;
   iconStyle: StyleProp<ImageStyle>;

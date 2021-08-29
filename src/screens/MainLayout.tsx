@@ -37,7 +37,7 @@ interface ITabButton {
   label: string;
   icon: ImageProps | Readonly<ImageProps>;
   isFocused: boolean;
-  onPress: any;
+  onPress(): void;
   outerContainerStyle: StyleProp<ViewStyle>;
   innerContainerStyle: StyleProp<ViewStyle>;
 }
@@ -99,10 +99,10 @@ const TabButton = ({
 };
 
 interface IMainLayout {
-  drawerAnimationStyle: any;
+  drawerAnimationStyle: StyleProp<Animated.AnimateStyle<StyleProp<ViewStyle>>>;
   navigation: DrawerNavigationHelpers;
   selectedTab: string;
-  setSelectedTab: any;
+  setSelectedTab(tab: string): void;
 }
 
 const MainLayout = ({
@@ -279,11 +279,13 @@ const MainLayout = ({
 
   return (
     <Animated.View
-      style={{
-        flex: 1,
-        backgroundColor: COLORS.white,
-        ...drawerAnimationStyle,
-      }}>
+      style={[
+        {
+          flex: 1,
+          backgroundColor: COLORS.white,
+        },
+        drawerAnimationStyle,
+      ]}>
       {/* Header */}
       <Header
         containerStyle={{
