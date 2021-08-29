@@ -99,7 +99,7 @@ const Home = () => {
           borderRadius: SIZES.radius,
           backgroundColor: COLORS.lightGray2,
         }}>
-        {/*´ Icon */}
+        {/* Icon */}
         <Image
           source={icons.search}
           style={{
