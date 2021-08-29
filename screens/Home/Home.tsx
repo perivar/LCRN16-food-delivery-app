@@ -11,6 +11,8 @@ import { HorizontalFoodCard, VerticalFoodCard } from '../../components';
 
 import { FONTS, SIZES, COLORS, icons, dummyData } from '../../constants';
 
+import { FilterModal } from '../';
+
 interface ISection {
   title: string;
   onPress: any;
@@ -49,6 +51,7 @@ const Home = () => {
   const [popular, setPopular] = React.useState([]);
   const [recommends, setRecommends] = React.useState([]);
   const [menuList, setMenuList] = React.useState([]);
+  const [showFilterModal, setShowFilterModal] = React.useState(false);
 
   React.useEffect(() => {
     handleChangeCategory(selectedCategoryId, selectedMenuType);
@@ -57,7 +60,7 @@ const Home = () => {
   // Handler
   function handleChangeCategory(categoryId: number, menuTypeId: number) {
     // Retrieve the popular menu
-    let selectedPopular = dummyData.menu.find(a => a.name == 'Popular');
+    let selectedPopular = dummyData.menu.find(a => a.name === 'Popular');
 
     // Retrieve the recommended menu
     let selectedRecommend = dummyData.menu.find(a => a.name === 'Recommended');
@@ -81,7 +84,7 @@ const Home = () => {
     );
   }
 
-  // Render
+  // Render functions
 
   function renderSearch() {
     return (
@@ -117,10 +120,7 @@ const Home = () => {
         />
 
         {/* Filter Button */}
-
-        <TouchableOpacity
-        //onPress
-        >
+        <TouchableOpacity onPress={() => setShowFilterModal(true)}>
           <Image
             source={icons.filter}
             style={{
@@ -327,6 +327,14 @@ const Home = () => {
       }}>
       {/* Search */}
       {renderSearch()}
+
+      {/* Filter */}
+      {showFilterModal && (
+        <FilterModal
+          isVisible={showFilterModal}
+          onClose={() => setShowFilterModal(false)}
+        />
+      )}
 
       {/* List */}
       <FlatList

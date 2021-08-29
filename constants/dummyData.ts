@@ -1,4 +1,5 @@
 import { icons, images } from './';
+import { IProductInfo } from './types';
 
 const myProfile = {
   name: 'ByProgrammers',
@@ -24,7 +25,7 @@ const categories = [
   },
 ];
 
-const hamburger = {
+const hamburger: IProductInfo = {
   id: 1,
   name: 'Hamburger',
   description: 'Chicken patty hamburger',
@@ -35,7 +36,7 @@ const hamburger = {
   image: require('../assets/dummyData/hamburger.png'),
 };
 
-const hotTacos = {
+const hotTacos: IProductInfo = {
   id: 2,
   name: 'Hot Tacos',
   description: 'Mexican tortilla & tacos',
@@ -46,7 +47,7 @@ const hotTacos = {
   image: require('../assets/dummyData/hot_tacos.png'),
 };
 
-const vegBiryani = {
+const vegBiryani: IProductInfo = {
   id: 3,
   name: 'Veg Biryani',
   description: 'Indian Vegetable Biryani',
@@ -57,7 +58,7 @@ const vegBiryani = {
   image: require('../assets/dummyData/veg_biryani.png'),
 };
 
-const wrapSandwich = {
+const wrapSandwich: IProductInfo = {
   id: 4,
   name: 'Wrap Sandwich',
   description: 'Grilled vegetables sandwich',

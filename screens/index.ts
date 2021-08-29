@@ -2,6 +2,7 @@ import MainLayout from './MainLayout';
 
 // Home
 import Home from './Home/Home';
+import FilterModal from './Home/FilterModal';
 
 // Search
 import Search from './Search/Search';
@@ -15,4 +16,12 @@ import Favourite from './Favourite/Favourite';
 // Notification
 import Notification from './Notification/Notification';
 
-export { MainLayout, Home, Search, CartTab, Favourite, Notification };
+export {
+  MainLayout,
+  Home,
+  FilterModal,
+  Search,
+  CartTab,
+  Favourite,
+  Notification,
+};

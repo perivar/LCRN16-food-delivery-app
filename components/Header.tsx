@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleProp, ViewStyle } from 'react-native';
 import { FONTS } from '../constants';
 
-interface IHome {
+interface IHeader {
   containerStyle: StyleProp<ViewStyle>;
   title: string;
   leftComponent: React.ReactNode;
@@ -14,7 +14,7 @@ const Header = ({
   title,
   leftComponent,
   rightComponent,
-}: IHome) => {
+}: IHeader) => {
   return (
     <View
       style={[

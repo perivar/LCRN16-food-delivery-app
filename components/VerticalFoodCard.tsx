@@ -1,18 +1,39 @@
 import React from 'react';
-import { TouchableOpacity, View, Text, Image } from 'react-native';
+import {
+  TouchableOpacity,
+  View,
+  Text,
+  Image,
+  StyleProp,
+  ViewStyle,
+} from 'react-native';
 import { COLORS, FONTS, SIZES, icons } from '../constants';
+import { IProductInfo } from '../constants/types';
 
-const VerticalFoodCard = ({ containerStyle, item, onPress }: any) => {
+interface IVerticalFoodCard {
+  containerStyle: StyleProp<ViewStyle>;
+  item: IProductInfo;
+  onPress(): void;
+}
+
+const VerticalFoodCard = ({
+  containerStyle,
+  item,
+  onPress,
+}: IVerticalFoodCard) => {
   return (
     <TouchableOpacity
-      style={{
-        width: 200,
-        padding: SIZES.radius,
-        alignItems: 'center',
-        borderRadius: SIZES.radius,
-        backgroundColor: COLORS.lightGray2,
-        ...containerStyle,
-      }}>
+      style={[
+        {
+          width: 200,
+          padding: SIZES.radius,
+          alignItems: 'center',
+          borderRadius: SIZES.radius,
+          backgroundColor: COLORS.lightGray2,
+        },
+        containerStyle,
+      ]}
+      onPress={onPress}>
       {/* Calories and Favourite */}
       <View style={{ flexDirection: 'row' }}>
         {/* Calories */}

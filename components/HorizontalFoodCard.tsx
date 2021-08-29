@@ -1,12 +1,14 @@
 import React from 'react';
+import { ImageStyle, StyleProp, ViewStyle } from 'react-native';
 import { TouchableOpacity, View, Text, Image } from 'react-native';
 import { COLORS, FONTS, SIZES, icons } from '../constants';
+import { IProductInfo } from '../constants/types';
 
 interface IHorizontalFoodCard {
-  containerStyle: any;
-  imageStyle: any;
-  item: any;
-  onPress: any;
+  containerStyle: StyleProp<ViewStyle>;
+  imageStyle: StyleProp<ImageStyle>;
+  item: IProductInfo;
+  onPress(): void;
 }
 
 const HorizontalFoodCard = ({
@@ -17,12 +19,15 @@ const HorizontalFoodCard = ({
 }: IHorizontalFoodCard) => {
   return (
     <TouchableOpacity
-      style={{
-        flexDirection: 'row',
-        borderRadius: SIZES.radius,
-        backgroundColor: COLORS.lightGray2,
-        ...containerStyle,
-      }}>
+      style={[
+        {
+          flexDirection: 'row',
+          borderRadius: SIZES.radius,
+          backgroundColor: COLORS.lightGray2,
+        },
+        containerStyle,
+      ]}
+      onPress={onPress}>
       {/* Image */}
       <Image source={item.image} style={imageStyle} />
 
@@ -32,7 +37,6 @@ const HorizontalFoodCard = ({
           flex: 1,
         }}>
         {/* Name */}
-
         <Text style={{ ...FONTS.h3, fontSize: 17 }}>{item.name}</Text>
 
         {/* Description */}
@@ -45,6 +49,7 @@ const HorizontalFoodCard = ({
           ${item.price}
         </Text>
       </View>
+
       {/* Calories */}
       <View
         style={{
