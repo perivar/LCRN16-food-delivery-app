@@ -181,11 +181,12 @@ const FilterModal = ({ isVisible, onClose }: IFilterModal) => {
                   backgroundColor:
                     item.id === ratings ? COLORS.primary : COLORS.lightGray2,
                 }}
-                label={item.label}
+                label={`${item.label}`}
                 labelStyle={{
                   color: item.id === ratings ? COLORS.white : COLORS.gray,
                 }}
                 icon={icons.star}
+                iconPosition={'LEFT'}
                 iconStyle={{
                   tintColor: item.id === ratings ? COLORS.white : COLORS.gray,
                 }}

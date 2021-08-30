@@ -7,7 +7,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import rootReducer from './src/stores/rootReducer';
-import CustomDrawer from './src/navigation/CustomDrawer';
+// import CustomDrawer from './src/navigation/CustomDrawer';
 
 import { OnBoarding, SignIn, SignUp, ForgotPassword, Otp } from './src/screens';
 

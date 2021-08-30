@@ -8,16 +8,18 @@ import {
   ViewStyle,
   TextStyle,
   ImageSourcePropType,
+  StyleSheet,
 } from 'react-native';
 import { FONTS, COLORS } from '../constants';
 
 interface ITextIconButton {
   containerStyle: StyleProp<ViewStyle>;
-  label: number;
+  label: string;
   labelStyle: StyleProp<TextStyle>;
   icon: ImageSourcePropType;
+  iconPosition: 'LEFT' | 'RIGHT';
   iconStyle: StyleProp<ImageStyle>;
-  onPress(): void;
+  onPress?(): void;
 }
 
 const TextIconButton = ({
@@ -25,6 +27,7 @@ const TextIconButton = ({
   label,
   labelStyle,
   icon,
+  iconPosition,
   iconStyle,
   onPress,
 }: ITextIconButton) => {
@@ -39,6 +42,18 @@ const TextIconButton = ({
         containerStyle,
       ]}
       onPress={onPress}>
+      {iconPosition === 'LEFT' && (
+        <Image
+          source={icon}
+          style={[
+            {
+              ...styles.image,
+            },
+            iconStyle,
+          ]}
+        />
+      )}
+
       <Text
         style={[
           {
@@ -48,20 +63,29 @@ const TextIconButton = ({
         ]}>
         {label}
       </Text>
-      <Image
-        source={icon}
-        style={[
-          {
-            marginLeft: 5,
-            width: 20,
-            height: 20,
-            tintColor: COLORS.black,
-          },
-          iconStyle,
-        ]}
-      />
+
+      {iconPosition === 'RIGHT' && (
+        <Image
+          source={icon}
+          style={[
+            {
+              ...styles.image,
+            },
+            iconStyle,
+          ]}
+        />
+      )}
     </TouchableOpacity>
   );
 };
+
+const styles = StyleSheet.create({
+  image: {
+    marginLeft: 5,
+    width: 20,
+    height: 20,
+    tintColor: COLORS.black,
+  },
+});
 
 export default TextIconButton;

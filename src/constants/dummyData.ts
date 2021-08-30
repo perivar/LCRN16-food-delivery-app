@@ -1,9 +1,8 @@
-import { icons, images } from './';
 import { IProductInfo } from './types';
 
 const myProfile = {
   name: 'ByProgrammers',
-  profile_image: images.profile,
+  profile_image: require('../../assets/images/profile.png'),
   address: 'No. 88, Jln Padungan, Kuching',
 };
 
@@ -11,17 +10,17 @@ const categories = [
   {
     id: 1,
     name: 'Fast Food',
-    icon: icons.burger,
+    icon: require('../../assets/icons/burger.png'),
   },
   {
     id: 2,
     name: 'Fruit Item',
-    icon: icons.cherry,
+    icon: require('../../assets/icons/cherry.png'),
   },
   {
     id: 3,
     name: 'Rice Item',
-    icon: icons.rice,
+    icon: require('../../assets/icons/rice.png'),
   },
 ];
 
