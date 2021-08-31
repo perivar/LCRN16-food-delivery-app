@@ -1,4 +1,4 @@
-import React, { Dispatch } from 'react';
+import React from 'react';
 import {
   View,
   Text,
@@ -17,9 +17,6 @@ import Animated, {
 } from 'react-native-reanimated';
 import LinearGradient from 'react-native-linear-gradient';
 
-import { connect } from 'react-redux';
-import { setSelectedTab } from '../stores/tab/tabActions';
-
 import { Home, Search, CartTab, Favourite, Notification } from '../screens';
 import { Header } from '../components';
 
@@ -32,6 +29,7 @@ import {
   dummyData,
 } from '../constants';
 import { DrawerNavigationHelpers } from '@react-navigation/drawer/lib/typescript/src/types';
+import { connector, PropsFromRedux } from '../redux/store/connector';
 
 interface ITabButton {
   label: string;
@@ -98,12 +96,10 @@ const TabButton = ({
   );
 };
 
-interface IMainLayout {
+type IMainLayout = PropsFromRedux & {
   drawerAnimationStyle: StyleProp<Animated.AnimateStyle<StyleProp<ViewStyle>>>;
   navigation: DrawerNavigationHelpers;
-  selectedTab: string;
-  setSelectedTab(tab: string): void;
-}
+};
 
 const MainLayout = ({
   drawerAnimationStyle,
@@ -442,17 +438,4 @@ const MainLayout = ({
   );
 };
 
-function mapStateToProps(state: any) {
-  return {
-    selectedTab: state.tabReducer.selectedTab,
-  };
-}
-function mapDispatchToProps(dispatch: Dispatch<any>) {
-  return {
-    setSelectedTab: (selectedTab: string) => {
-      return dispatch(setSelectedTab(selectedTab));
-    },
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(MainLayout);
+export default connector(MainLayout);

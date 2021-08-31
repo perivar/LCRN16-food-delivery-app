@@ -101,7 +101,7 @@ const SignUp = ({ navigation }: any) => {
                   tintColor:
                     username === ''
                       ? COLORS.gray
-                      : username != '' && usernameError === ''
+                      : username !== '' && usernameError === ''
                       ? COLORS.green
                       : COLORS.red,
                 }}

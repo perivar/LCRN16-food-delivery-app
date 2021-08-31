@@ -6,8 +6,6 @@ import {
   DrawerContentScrollView,
 } from '@react-navigation/drawer';
 import Animated from 'react-native-reanimated';
-import { connect } from 'react-redux';
-import { setSelectedTab } from '../stores/tab/tabActions';
 
 import { MainLayout } from '../screens';
 import {
@@ -19,8 +17,12 @@ import {
   dummyData,
 } from '../constants';
 import { DrawerNavigationHelpers } from '@react-navigation/drawer/lib/typescript/src/types';
+import { connector, PropsFromRedux } from '../redux/store/connector';
 
-const Drawer = createDrawerNavigator();
+type ICustomDrawer = PropsFromRedux;
+type ICustomDrawerContent = PropsFromRedux & {
+  navigation: DrawerNavigationHelpers;
+};
 
 interface ICustomDrawerItem {
   label: string;
@@ -28,6 +30,8 @@ interface ICustomDrawerItem {
   isFocused?: boolean;
   onPress?(): void;
 }
+
+const Drawer = createDrawerNavigator();
 
 const CustomDrawerItem = ({
   label,
@@ -67,17 +71,11 @@ const CustomDrawerItem = ({
   );
 };
 
-interface CustomDrawerContent {
-  navigation: DrawerNavigationHelpers;
-  selectedTab: string;
-  setSelectedTab(tab: string): void;
-}
-
 const CustomDrawerContent = ({
   navigation,
   selectedTab,
   setSelectedTab,
-}: CustomDrawerContent) => {
+}: ICustomDrawerContent) => {
   return (
     <DrawerContentScrollView
       scrollEnabled={true}
@@ -200,11 +198,6 @@ const CustomDrawerContent = ({
   );
 };
 
-interface ICustomDrawer {
-  selectedTab: string;
-  setSelectedTab(tab: string): void;
-}
-
 const CustomDrawer = ({ selectedTab, setSelectedTab }: ICustomDrawer) => {
   const [progress, setProgress] = React.useState<Animated.Node<number>>(
     new Animated.Value(0)
@@ -264,17 +257,4 @@ const CustomDrawer = ({ selectedTab, setSelectedTab }: ICustomDrawer) => {
   );
 };
 
-function mapStateToProps(state: any) {
-  return {
-    selectedTab: state.tabReducer.selectedTab,
-  };
-}
-function mapDispatchToProps(dispatch: any) {
-  return {
-    setSelectedTab: (selectedTab: string) => {
-      return dispatch(setSelectedTab(selectedTab));
-    },
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(CustomDrawer);
+export default connector(CustomDrawer);

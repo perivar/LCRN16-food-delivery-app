@@ -1,14 +1,9 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, Image } from 'react-native';
+import { View, Image } from 'react-native';
 import { AuthLayout } from '..';
-import { FONTS, SIZES, COLORS, icons } from '../../constants';
+import { SIZES, COLORS, icons } from '../../constants';
 
-import {
-  CustomSwitch,
-  FormInput,
-  TextButton,
-  TextIconButton,
-} from '../../components';
+import { FormInput, TextButton } from '../../components';
 import { utils } from '../../utils';
 
 const ForgotPassword = ({ navigation }: any) => {

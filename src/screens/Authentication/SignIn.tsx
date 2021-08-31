@@ -135,6 +135,7 @@ const SignIn = ({ navigation }: any) => {
               ? COLORS.primary
               : COLORS.transparentPrimary,
           }}
+          onPress={() => navigation.navigate('Home')}
         />
 
         {/* Sign Up */}
